@@ -96,7 +96,7 @@ public class Rank {
         for (Rank rank : getDefaultRanks()) {
             rank.addPlayer(event.getPlayer().getUniqueId());
         }
-//        Bukkit.getPluginManager().callEvent(new RankChangeEvent());
+        // Bukkit.getPluginManager().callEvent(new RankChangeEvent());
     }
 
 }
