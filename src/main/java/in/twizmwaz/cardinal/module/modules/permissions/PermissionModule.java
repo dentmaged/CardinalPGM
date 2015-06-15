@@ -8,9 +8,12 @@ import in.twizmwaz.cardinal.event.MatchStartEvent;
 import in.twizmwaz.cardinal.event.PlayerChangeTeamEvent;
 import in.twizmwaz.cardinal.event.RankChangeEvent;
 import in.twizmwaz.cardinal.module.Module;
+import in.twizmwaz.cardinal.module.modules.nicks.NickModule;
 import in.twizmwaz.cardinal.rank.Rank;
 import in.twizmwaz.cardinal.util.TeamUtils;
+
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -174,9 +177,16 @@ public class PermissionModule implements Module {
 
     @EventHandler
     public void onRankChange(RankChangeEvent event) {
-        String prefix = Rank.getPlayerPrefix(event.getPlayer().getUniqueId());
-        event.getPlayer().setDisplayName(prefix + event.getTeam().getColor() + event.getPlayer().getName());
-        event.getPlayer().setPlayerListName(prefix + event.getTeam().getColor() + event.getPlayer().getName());
+        Player player = event.getPlayer();
+        String nick = GameHandler.getGameHandler().getMatch().getModules().getModule(NickModule.class).getNick(player);
+        if (nick != null) {
+            player.setDisplayName(event.getTeam().getColor() + nick);
+            player.setPlayerListName(event.getTeam().getColor() + nick);
+        } else {
+            String prefix = Rank.getPlayerPrefix(event.getPlayer().getUniqueId());
+            player.setDisplayName(prefix + event.getTeam().getColor() + event.getPlayer().getName());
+            player.setPlayerListName(prefix + event.getTeam().getColor() + event.getPlayer().getName());
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

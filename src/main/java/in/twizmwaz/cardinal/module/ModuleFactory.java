@@ -39,6 +39,7 @@ import in.twizmwaz.cardinal.module.modules.matchTranscript.MatchTranscriptBuilde
 import in.twizmwaz.cardinal.module.modules.mob.MobModuleBuilder;
 import in.twizmwaz.cardinal.module.modules.monumentModes.MonumentModesBuilder;
 import in.twizmwaz.cardinal.module.modules.motd.MOTDBuilder;
+import in.twizmwaz.cardinal.module.modules.nicks.NickBuilder;
 import in.twizmwaz.cardinal.module.modules.observers.ObserverModuleBuilder;
 import in.twizmwaz.cardinal.module.modules.permissions.PermissionModuleBuilder;
 import in.twizmwaz.cardinal.module.modules.playable.PlayableBuilder;
@@ -75,12 +76,13 @@ import in.twizmwaz.cardinal.module.modules.visibility.VisibilityBuilder;
 import in.twizmwaz.cardinal.module.modules.wildcard.WildCardBuilder;
 import in.twizmwaz.cardinal.module.modules.wools.WoolObjectiveBuilder;
 import in.twizmwaz.cardinal.module.modules.worldFreeze.WorldFreezeBuilder;
-import org.bukkit.Bukkit;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+
+import org.bukkit.Bukkit;
 
 public class ModuleFactory {
 
@@ -160,7 +162,8 @@ public class ModuleFactory {
             UpdateNotificationBuilder.class,
             MatchTranscriptBuilder.class,
             PotionRemoverBuilder.class,
-            InvisibleBlockBuilder.class
+            InvisibleBlockBuilder.class,
+            NickBuilder.class
     };
     private final List<ModuleBuilder> builders;
 
