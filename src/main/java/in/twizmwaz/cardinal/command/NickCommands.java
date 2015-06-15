@@ -21,7 +21,7 @@ public class NickCommands {
 
     @SuppressWarnings("deprecation")
     @Command(aliases = "nick", desc = "Changes your nickname", usage = "<show|off|nick>", min = 1, max = 2)
-    @CommandPermissions("cardinal.say")
+    @CommandPermissions("cardinal.nick")
     public static void nick(final CommandContext args, CommandSender sender) throws CommandException {
         if (!(sender instanceof Player))
             throw new CommandException("Only players may run this command!");
